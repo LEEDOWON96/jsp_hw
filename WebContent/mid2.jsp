@@ -16,17 +16,15 @@
 <%
 
 String num1=request.getParameter("num");
-String cmd = request.getParameter("cmd");
 String click = request.getParameter("click");
-;
+
+
 String A_checked = "1".equals(num1) ? "checked" : "";
 String B_checked = "2".equals(num1) ? "checked" : "";
 String C_checked = "3".equals(num1) ? "checked" : "";
 
 
-if (click!=null){
-	num1=cmd;
-}
+
 %>
   <div class="container">
     <form >
