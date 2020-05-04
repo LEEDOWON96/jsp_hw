@@ -6,7 +6,7 @@
 <style>
   body { font-family: 굴림체; }
   table { border-collapse: collapse; }
-  td { padding: 5px; border: solid 1px gray; }
+  tr { padding: 5px; border: solid 1px gray; }
   form div { margin-bottom: 10px; }
   input { width: 200px; padding: 4px; }
   button { padding: 0.4em 1em; margin-top: 10px; }
@@ -22,7 +22,6 @@ int number = (s1==null)?0:Integer.parseInt(s1);
 
 %>
       <form>
-    
         <input type="text" name="number1" value=<%=number %> />
         <button type="submit" name="cmd" > 단 </button>
        
