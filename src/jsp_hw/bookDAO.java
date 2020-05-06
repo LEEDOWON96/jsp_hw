@@ -11,7 +11,7 @@ import lecture1.DB;
 
 public class bookDAO {
 
-    private static book getStudentFrom(ResultSet resultSet) throws SQLException {
+    private static book getBookFrom(ResultSet resultSet) throws SQLException {
         book book = new book();
         book.setId(resultSet.getInt("id"));
         book.settitle(resultSet.getString("title"));
@@ -31,40 +31,25 @@ public class bookDAO {
              ResultSet resultSet = statement.executeQuery()) {
             ArrayList<book> list = new ArrayList<book>();
             while (resultSet.next())
-                list.add(getStudentFrom(resultSet));
+                list.add(getBookFrom(resultSet));
             return list;
         }
     }
 
-    public static List<book> findByName(String name) throws Exception {
+    public static List<book> findByAuthor(String author) throws Exception {
         String sql = "SELECT b.*, categoryName " +
                      "FROM book b JOIN category c ON categoryId=c.id " +
                      "WHERE author LIKE ?";
         try (Connection connection = DB.getConnection("book");
              PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setString(1, name + "%");
+            statement.setString(1, author + "%");
             try (ResultSet resultSet = statement.executeQuery()) {
                 ArrayList<book> list = new ArrayList<book>();
                 while (resultSet.next())
-                    list.add(getStudentFrom(resultSet));
+                    list.add(getBookFrom(resultSet));
                 return list;
             }
         }
     }
 
-    public static book findById(int id) throws Exception {
-        String sql = "SELECT s.*, d.departmentName " +
-                     "FROM student s LEFT JOIN department d ON s.departmentId = d.id " +
-                     "WHERE s.id = ?";
-        try (Connection connection = DB.getConnection("book");
-             PreparedStatement statement = connection.prepareStatement(sql)) {
-            statement.setInt(1, id);
-            try (ResultSet resultSet = statement.executeQuery()) {
-                if (resultSet.next())
-                    return getStudentFrom(resultSet);
-                else
-                    return null;
-            }
-        }
-    }
 }
