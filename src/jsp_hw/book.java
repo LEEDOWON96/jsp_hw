@@ -1,7 +1,6 @@
 package jsp_hw;
 
 public class book {
-
     int id;
     String title;
     String author;
