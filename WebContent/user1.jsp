@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.List, lecture1.jdbc1.*" %>
+
 <%
 String s = request.getParameter("id");
 int id = (s==null)?1:Integer.parseInt(s);
