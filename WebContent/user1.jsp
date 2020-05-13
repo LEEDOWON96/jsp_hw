@@ -2,7 +2,7 @@
 <%@ page import="java.util.List, lecture1.jdbc1.*" %>
 <%
 String s = request.getParameter("id");
-int id = Integer.parseInt(s);
+int id = (s==null)?1:Integer.parseInt(s);
 User user = UserDAO3.findById(id);
 %>
 <!DOCTYPE html>

@@ -3,7 +3,7 @@
 <%
 String srchText = request.getParameter("srchText");
 if (srchText == null) srchText = "";
-List<User> list = UserDAO2.findByName(srchText);
+List<User> list = UserDAO3.findByName(srchText);
 %>
 <!DOCTYPE html>
 <html>
@@ -45,10 +45,9 @@ List<User> list = UserDAO2.findByName(srchText);
         <% for (User user : list) { %>
               <tr>
                   <td><%= user.getuserid() %></td>
-                  <td><%= user.getname() %></td>
+                  <td><a href="user1.jsp?id=<%= user.getId() %>"><%= user.getname() %></a>></td>
                   <td><%= user.getemail() %></td>
                   <td><%= user.getdepartmentName() %></td>
-                  
                   <td><%= user.getuserType() %></td>
               </tr>
           <% } %>
